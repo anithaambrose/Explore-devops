@@ -1,1 +1,26 @@
 
+Task -1:
+
+1.Create a directory called ""my_folder"", navigate into it, and create a file named ""my_file.txt"" with some text. Then, create another file named ""another_file.txt"" with some text. 
+Concatenate the content of ""another_file.txt"" to ""my_file.txt"" and display the updated content. Finally, list all files and directories in the current directory.
+
+mkdir - makes directory 
+cd - changes directory
+nano - create new file/open's existing file 
+cat - prints the contents of the file 
+>>  - appends 
+ll  - lists all files & directories 
+
+For Output : -------------Refer to task 1.1 Screenshot ----------------------
+
+
+2.Create 20 files with .txt extensions and rename the first 5 files to .yml extension and Print the latest created top 5 files among the total no of files".
+
+touch - creates files without opening the file
+ls -l   - displays list of files in the order of creation 
+mv - to move file to different directory or renaming the file in current directory
+ls -lrt (l - lists with additional info ;r - - sorts in reverse order; t - sorts file timestamp i.e most recently created to oldest )
+head - prints from the top 
+tail - prints from the bottom 
+
+For Output :-------------Refer to task 1.1 Screenshot ----------------------
