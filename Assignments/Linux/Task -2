@@ -3,9 +3,22 @@ File Permission Task
 Task Description:
 
 Create a file with .txt extension (/home/demo.txt). 
-
-
-
 Change the permission set of that file, so that any user can read it, group can read/write & owner can read/write/execute it.
+
+/home directory - has both owner & the group as ROOT, hence we can use the below two methods to create & change permissions.
+
+owner = rwx or 7
+group = rw or 6
+others = r or 4
+
+ method: 1 
+       sudo touch  - creates the file as Root
+       Use u=rwx,g=rw,o=r  to change file permisssions 
+------------please refer task 2.1 Screenshot ----------------------
+
+ method : 2
+      appending the others with write Permissions for /home directory, this lets us create the file with Ubuntu as both the  owner & group.
+      Use numeric value 764 to change file permissions   
+------------please refer to task 2.2 Screenshot --------------------
 
 
