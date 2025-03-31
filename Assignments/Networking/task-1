@@ -6,14 +6,13 @@ Task Description:
 1.1 -> We can either use nslookup or dig command to fetch the IP address of a domain/website.
 -----------please refer to task 1.1.1 screenshot------------------------------------
 
-
 1.2 -> Top command  display both the CPU & memory usage of the server.
 -----------please refer to task 1.1.2 screenshot------------------------------------
 
 1.3 -> ping command  used to test the connectivity between 2 nodes.
 -----------please refer to task 1.1.3 screenshot------------------------------------
 
-
+=========================================================================================
 
 2.I have deployed an application in guvi.com:9000, and logs show my app is running, but I’m unable to view the page. Check whether my port is open or not ?
 
@@ -22,5 +21,5 @@ Task Description:
 ->nmap command scans all open server ports for the specificed domain 
 
 In this case port 9000 isnt available in the open ports list, hence confirms that port 9000 is NOT OPEN & ACTIVE.
------------please refer to task 2.1 screenshot------------------------------------
+-----------please refer to task 1.2 screenshot------------------------------------
 
