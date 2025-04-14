@@ -10,3 +10,21 @@ we can use NR - keyword (number of records) in input file passed then awk comman
 and use sed command to replce "give" with "learning" & store the updated line in a new file (output.txt)
 
 ---please refer to task 1.2 screenshot---
+
+ubuntu@ip-172-31-13-40:~/bash_ex$ cat output.txt 
+1 Welcome to my first line in give devops.
+2 Welcome to my second line in give devops.
+3 Welcome to my third line in give devops.
+4 Welcome to my fourth line in give devops.
+5 Welcome to my fifth line in learning devops.
+7 Welcome to my seventh line learning devops.
+9 Welcome to my nineth line in learning devops.
+6 my sixth line in give devops.
+8 welcome to my eighth line in  devops.
+ubuntu@ip-172-31-13-40:~/bash_ex$ 
+
+based on the input file 
+line6 is missing welcome so doesnt replace the word "give" &
+line 8 doesnt have the word give so no changes made.
+================================================================
+
