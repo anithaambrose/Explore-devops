@@ -1,1 +1,45 @@
+Task Description:
+
+Set up a VPC with an Internet gateway,
+create a public subnet with 256 IP addresses, a private subnet with 256 IP addresses,
+make a route table connecting the Internet gateway and the subnets,
+and launch a Linux EC2 instance by using the above VPC and public subnet.
+===========================================================================
+Step -1 Creating a VPC (virtual Private Cloud) 
+
+VPC_name = VPC-task ; CIDR block - 10.0.0.0/23 
+where 32-23 = 9 , 2^9 = 512 IP addresses
+--------- please refer to Screenshot 1 --------
+
+Step -2 Creating an Internet Gateway and attaching it to the VPC 
+
+Internal_Gateway_name = IGW-task
+--------- please refer to Screenshot 2 --------
+
+Step -3 Creating 2 Subnets (Private & Public - with 256 IP addresses)
+
+Subnet-public - cidr block - 10.0.0.0/24 = 256 IP addresses
+Subnet-private - Cidr block - 10.0.1.0/24 = 256 IP addresses
+
+--------- please refer to Screenshot 3 --------
+
+Step -4 Creating routing table & attaching a Subnets to make it PUBLIC
+
+route_table_name = route-task
+select subnet association to add subnet-public and save changes
+--------- please refer to Screenshot 4 --------
+
+Step -5 adding the internet gatway to the routes 
+
+by clicking on add route setting the destination to 0.0.0.0/0 & itarget as IGW-task.
+--------- please refer to Screenshot 5 --------
+
+Step -6 Create an EC2 instance by using VPC & Subnet-public 
+
+by editing the network setting in the laaunch instance page to the newly created VPC and subnet-public and enabling the auto assign IP address 
+also, creatinga new Security group with inbound rule -; source type - anywhere and click on launch instance. 
+verified by running ping command.
+
+--------- please refer to Screenshot 6 for instance information & 7 for verifying the instance by doing connectivity check for google.com  --------
+
 
