@@ -1,0 +1,19 @@
+Task Description:
+
+Create a windows Vm machine in AWS and connect with RDP open CMD in windows share the about system info.
+
+Techstacks needs to be used : 
+AWS EC2 (windows)
+RDP (Preavailable in Windows)
+==========================================================================================================
+
+Step - 1 : Click on Launch instance ; Assign a name to the Instance as Windows_Task_1 & slect Windows OS image from Under Quick start tab.
+Step - 2 : Creating a new key pair - aws_t-1 
+Step - 3 : Creating a new Security Grouo & selected all check boxes under Network setting to allow traffice(RDP, HTTP, HTTPS) & Click Launch Instance.
+Step - 4 : Since We use MacOS, Downloaded Microsoft Remote Desktop Application from Appstore.
+Step - 5 : Click on Connect -> Under RDP client download the Remote Desktop File & click on get Password.
+Step - 6 : Upload the Private key file(aws_t-1.pem) & click on decrypt Password button to generate password.
+Step - 7 : Run the windows_Task_1.rdp file downloded in step 5 , paste the password generated in AWS console  & click Continue
+Step - 8 : Windows Remote Dektop is now connected with user name : Administrator 
+Step - 9 : Open Command Line in instance(windows server).
+
