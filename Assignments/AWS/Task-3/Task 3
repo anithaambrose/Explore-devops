@@ -3,28 +3,31 @@ Task Description:
 1 - Create a S3 bucket, with no public access and upload files to the bucket & 
 view the logs using cloudwatch for the uploaded files.
 
-Step 1 :- Create 2 buckets one for Object file and Another for Logs 
+Step 1 :- Created 2 buckets one for Object file and Another for Logs 
 
-Object bucket - taskbucket-101
-Log Bucket - taskbucket-101-logs
+Object bucket - task-bucket-101
+Log Bucket - task-bucket-101-logs
 
 --------------Please refer to Task_3_Screenshot - 1.1 -------------------------------
 
-Step 2 :- Under Object bucket Properties edit server access Logging by enabling 
+Step 2 :- Under Object bucket Properties edited server access Logging by enabling 
 and selecting the log bucket under destination.
 
 
 Step 3:
-a) Create Cloud Trial with storage location as log bucket under the existing bucket name 
+a) Created Cloud Trial with storage location as log bucket under the existing bucket name 
 
-Cloud Trial Name - taskbucket-101-cloudtrail
+Cloud Trial Name - task-bucket-101-CloudTrail
 
-b) Under CloudWatch logs section enable cloudwatch logs and provide the new loggroup name 
-Under Log Events section Enable Manaagemnet and Data events, provide the reource type &
-choose log all events from the drop down menu.
+b) Under CloudWatch logs trail attributes section,  enabled cloudwatch logs and provided the new loggroup name 
+Under Log Events section, Enabled both  Manaagemnet and Data events, provide the Resource type &
+selected log all events from the drop down menu.
 
-Loggroup name - taskbucket-101-loggroup
+Loggroup name - task-bucket-101-CW-Log-Group
+prefix - task-bucket-101-cloud-trail-prefix
+AWS KMS alais - task-bucket-101-KMS
 Resource Type - S3 
+Role name - CloudWatchRole-task-bucket-101-CloudTrial
 
 --------------Please refer to Task_3_Screenshot - 1.2 -------------------------------
 
