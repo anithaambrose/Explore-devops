@@ -19,7 +19,7 @@ a) Created Cloud Trial with storage location as log bucket under the existing bu
 
 Cloud Trial Name - task-bucket-101-CloudTrail
 
-b) Under CloudWatch logs trail attributes section,  enabled cloudwatch logs and provided the new loggroup name 
+b) Under CloudWatch logs trail attributes section, enabled cloudwatch logs and provided the new loggroup name 
 Under Log Events section, Enabled both  Manaagemnet and Data events, provide the Resource type &
 selected log all events from the drop down menu.
 
@@ -39,14 +39,24 @@ Step 6:- Verified the logs Under cloudwatch by seraching for the Uploaded object
 
 --------------Please refer to Task_3_Screenshot - 1.5 & 1.6 -------------------------------
 
-
-
+==========================================================================================================================================================
 
 2 - Launch two ec2-instances and connect it to a application load balancer, where the output traffic from the server must be an load balancer IP address
 
 
 
+
 --------------Please refer to Task_3 _Screenshot - 2.1 -------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 
