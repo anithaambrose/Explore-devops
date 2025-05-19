@@ -59,9 +59,13 @@ b) Name: private-sub
 Step 3:- Created an Internet Gateway & Attached it to task-VPC
   Name - task-IGW
 
+--------------Please refer to Task_3 _Screenshot - 2.1 -------------------------------
+
 Step 4:- Allocate Elastic IP & then Create NAT Gateway & attach it to task-VPC
   Name - task-NAT
   Subnet - public-sub
+
+--------------Please refer to Task_3 _Screenshot - 2.2 -------------------------------
 
 Step 5:- Created 2 Route Tables (public & private) associating it with respective subnets 
 
@@ -71,13 +75,11 @@ a)Name - task-route-public
 b)Name - task-route-private
   Route -> Destination as 0.0.0.0/0 & Target as task-NAT
 
---------------Please refer to Task_3 _Screenshot - 2.1 -------------------------------
+--------------Please refer to Task_3 _Screenshot - 2.3 -------------------------------
 
 Step 6:- created a Target Group & added both server 1 and server 2 as targets
 Name - task-TG 
 Protocol -  HTTP , Port - 80
-
---------------Please refer to Task_3 _Screenshot - 2.2 -------------------------------
 
 Step 7:- Created Security Groups for both EC2 & Application Load Balanacer
 Name - task-SG-ALB  
@@ -93,17 +95,16 @@ Security Group - task-SG-ALB
 Availability Zones - Added public-sub-1 & public-Sub-2
 Target Group - task-TG
 
---------------Please refer to Task_3 _Screenshot - 2.3 -------------------------------
+--------------Please refer to Task_3 _Screenshot - 2.4 & 2.5 -------------------------------
 
 Step 9: Launched 2 EC2 Instances (Server-Pub to connect as bastion & another as Server-Priv) & created security group for EC2 Allowing  HTTP (port 80) and SSH 
 
+--------------Please refer to Task_3 _Screenshot - 2.6 & 2.7 -------------------------------
+
 Step 10:- Connected to the Server-Pub & jumped to the Server-Priv and pinged google.com to verify the connectivity from private server
-ran curl.ifconfig.me -> to verify the elastic IP is returned. 
+ran curl.ifconfig.me ->  & verify the elastic IP is returned. 
 
---------------Please refer to Task_3 _Screenshot - 2.4 -------------------------------
-
-
-
+--------------Please refer to Task_3 _Screenshot - 2.7 -------------------------------
 
 
 
