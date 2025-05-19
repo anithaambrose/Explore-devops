@@ -43,8 +43,56 @@ Step 6:- Verified the logs Under cloudwatch by seraching for the Uploaded object
 
 2 - Launch two ec2-instances and connect it to a application load balancer, where the output traffic from the server must be an load balancer IP address
 
+Step 1:- Created VPC with CIDR block: 10.0.0.0/16
+  Name: task-VPC
 
+Step 2:- Created 3 Subnets (1 private Subnet & 2 Public Subnets) 
 
+a) Name - public-sub-1 & public-sub-2
+   CIDR block - 10.0.0.0/24 & 10.0.1.0/24 
+   Availability Zone -  2 Different Availability Zones ( us-south-1a, us-south-1b) each
+
+b) Name: private-sub
+   CIDR block - 10.0.2.0/24
+
+Availability Zone - us-south-1a
+
+Step 3:- Created an Internet Gateway & Attached it to task-VPC
+  Name - task-IGW
+
+Step 4:- Allocate Elastic IP & then Create NAT Gateway & attach it to task-VPC
+  Name - task-NAT
+  Subnet - public-sub
+
+Step 5:- Created 2 Route Tables (public & private) associating it with respective subnets 
+
+a)Name - task-route-public
+  Route -> Destination as 0.0.0.0/0 & Target as task-IGW
+
+b)Name - task-route-private
+  Route -> Destination as 0.0.0.0/0 & Target as task-NAT
+
+Step 6:- created a Target Group & added both server 1 and server 2 as targets
+Name - task-TG 
+Protocol -  HTTP , Port - 80
+
+Step 7:- Created Security Groups for both EC2 & Application Load Balanacer
+Name - task-SG-ALB  
+Inbound - HTTP (80) from 0.0.0.0/0
+
+Name - task-SG-EC2 SG (for server 1, server 2)
+Inbound - HTTP from task-SG-ALB
+
+Step 8:- Created an Application Load Balancer
+Name - task-ALB
+Listeners-  HTTP on port 80
+Security Group - task-SG-ALB
+Availability Zones - Added public-sub-1 & public-Sub-2
+Target Group - task-TG
+
+Step 9: Launched 2 EC2 Instances (1 public to connect as bastion & 1 Private ) & created security group for EC2 Allowing  HTTP (port 80) and SSH 
+
+Step 10:- Connected to 
 
 --------------Please refer to Task_3 _Screenshot - 2.1 -------------------------------
 
