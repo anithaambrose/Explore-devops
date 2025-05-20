@@ -1,5 +1,49 @@
 Task Description:
 
 Launch an EC2 instance (Linux and Windows) along with a web server. 
-Then, create an EBS volume of 5 GB, attach it to an EC2 machine (Linux and Windows), and 
-take a snapshot. Finally, create an EBS volume using the taken snapshot.
+Then, create an EBS volume of 5 GB, attach it to an EC2 machine (Linux and Windows), 
+and take a snapshot. Finally, create an EBS volume using the taken snapshot.
+
+==========================================================================================================
+
+Step 1:- 
+a) Launched a EC2 instance with default block storage volume (8GB) along with insatlling the apache2 service(web server) using user data under the advanced details section.
+
+Name - Task-Linux-Server
+AZ - ap-south-1b
+Storage size - 8GB (default)
+
+#!/bin/bash
+apt update -y 
+apt install apache2 -y
+systemctl start apache2
+systemctl enable apache2
+echo "<h1> Hello from Task-Linux-Server </h1>" /var/html/index.html
+
+b) Verified if the service is up & running (IP address check in the web browser & using systemcle status check)
+c) lsblk command to list the block storage information (before attching the EBS volume)
+
+------------------------------ Please Refer to Task_Screenshot_4.1 & 4.2 ----------------------------------------
+
+Step 2:- Created EB2 volume of 5 GB in the Availability Zone of the EC2 instance and attched the Volume with the EC2 instance
+& verified it by lsblk command.
+
+device name -/dev/sdf 
+main Volume - xvda - 8GB
+newly attached Volume - xvdf  - 5GB
+
+------------------------------ Please Refer to Task_Screenshot_4.3 ----------------------------------------
+
+Step 4:- Created a snapshot of the existing EBS volume (EBS-5GB) by using create snapshot option under Actions.
+
+------------------------------ Please Refer to Task_Screenshot_4.4 ----------------------------------------
+
+Step 5:- Created a new EBS volume using the snapshot craeted in the previous step , by selecting the option create volume under Actions drop down menu in Snapshots Tab
+Name - new_EBS_via_snapshot
+Size -5GB
+Volume_state -Available
+------------------------------ Please Refer to Task_Screenshot_4.5 ----------------------------------------
+
+=====================================================================================================================
+Note: Taking a snapshot of unmounted EBS volume will be blank as a best practise we can mount the EBS volume and create a file then take a snapshot of it,
+To later verify if the creation of EBS using snapshot has worked or not.
