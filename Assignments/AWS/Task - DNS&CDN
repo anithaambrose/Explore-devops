@@ -1,0 +1,135 @@
+EX - Application Deployment Architecture
+
+
+1. Create a VPC → region ap-south-mumbai
+ * choose VPC & more
+ * Enable autogenerate feature
+ * Give a tag name 
+ * subnet & mask - 10.0.0.0/16
+ * No of AZ- 2
+ * No of public & private subnet - 2 per each 
+ * NAT gateway - 1 Per AZ
+ * VPC endpoint - None
+ * Enable DNS hostnames
+ * Enable DNS resolution
+ * Click create VPC 
+
+NOTE: the below are automatically created when VPC is created 
+
+ * Create internet gateway: 1
+ * Attach internet gateway to the VPC
+ * Create route tables :  3 (2 private RT for Private subnets in 2 diff AZ , 1 Public RT for 2 public Subnets in diff AZ)
+ * Associate route table : public RT with IGW & private RT with NAT of its respective AZ (NAT-public-1)
+ * Allocate elastic IP: 2 for corresponding NAT's
+ * Create NAT gateway: 2 (NAT-public1-ap-south-1a, NT-public2-ap-south-1b)
+ 
+2. Go To EC2 dashboard - choose Auto Scaling Group 
+ * Click create ASG -give a name 
+     * Click create a Launch Template
+       * Give a name & desc
+       * Under AMI → quick start 
+       * choose ubuntu,
+       *key pair
+       *SG - projectVPC, inbound rule - SSH, All traffic , HTTP -port -80
+       *subnet- private (do not include in LT)
+       *Click Create LT
+   * Under Network → select VPC, Select 2 AZ's (private of both AZ's) → click Next
+   * Under Load Balancing → No LB
+   * Under Group Size → Desired -2, Min - 4 → Next 
+   * Under Add Notifications  (its upto you)
+   * click Skip for Preview
+   * Click Create ASG
+
+3. Got to EC2 dashboard → Launch a instance in public subnet 
+ * choose ubuntu
+ * keypair
+ * VPC
+ * public subnet(public2-ap-south-1b) or 1a anything of your choice
+ * Enable auto assign IP address
+ * select the exixting SG that we created during LT 
+ * Click Launch Instance
+
+ 4. Connect to the local terminal 
+ * change directory to Downloads where testkey.pem is available and cat the contents and copy it.
+ * jump to the public server using ssh -i testkey.pem  ubuntu@ipaddress of public server
+ * create anew file with .pem extensions & paste the copied contents & update file permissions to 600 using chmod  & exit
+
+5. Connect to Private Server 1 from the Public Jump Server
+ * ssh -i newfile.pem ubuntu@ipaddress of private server
+ * $ sudo apt update 
+ *  create a .html file
+        vi index.html
+        <!DOCTYPE html> <html><h1> FIRST SERVER</h1></body></html>
+        Run the python command
+        $python3 -m http.server 8000 - now it starts listening 
+ * Duplicate the public server & this time jump to private server 2 using step 5 & continue
+
+6. Create a LB - Application LB
+ * Load balancer name
+ * SchemeInfo - Internet-facing
+ * choose VPC , select 2 AZ's with public subnets
+ * choose SG - project SG of LT that we created 
+ * listener -  80 
+ 
+7. Create Target Group 
+ * TG type - instances
+ * name - aws-project-TG
+ * choose VPC → Next
+ * select instances (private) with port - 8000
+ * click Create TG
+ * Choose TG
+ * Click Create ALB
+
+8. Go to Route53 → Get started → Create Hosted Zones → Get started 
+ * Give domain name & desc
+ * type - Private hosted Zone
+ * Region - Mumbai  & choose VPC 
+ * click create hosted Zone
+
+9. Go to Hosted zone details  under Route53 → hosted Zone  you will  find default records (NS, SOA - record type)
+ * click create Record
+ * Give a record name 
+ * choose record type - CNAME
+ * Value -  copy paste the DNS name from the ALB details
+ * click create record
+
+10. Copy paste the DNS  name of ALB in web browser and verify if the traffic is being distributed to both EC2 instances
+
+NOTE:A hosted zone tells Route 53 how to respond to DNS queries for a domain such as example.com.
+
+==================================================================================================================================================
+
+Ex - basic cloud front distribution
+
+ Exercise Link  :  https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.SimpleDistribution.html
+
+In AWS console:
+===============
+1. create s3 bucket → General Purpose ; Give name → Create bucket
+
+2. Download the Zip file from the doc link above
+select S3 bucket → upload → add files → select the CSS & html files → click upload
+
+3. Create cloud front distribution → search Cloud front → click create distribution
+ * choose Single Website or App
+ * Give Origin domain → give S3 bucket here 
+ * Enable Origin access control settings
+ * create new OAC (origin access control) → click create , create 
+ * Enable security protections for web Application Firewall (WAF)
+ * click create distribution → Policy notification pops up
+ * copy the policy → click origins → verify 
+ 
+4. Got to S3 bucket → select bucket 
+ * Under permissions → edit bucket policies
+ * Paste the Copied policy from the previous step 2g in the space for code 
+ * Click save changes
+
+5. Go to cloud front  distribution, once it is active
+ * copy the distribution domain name 
+ * run it in browser (distribution domain name_url type /index.html without any space before /
+
+this is how we can access the s3 bucket (which has public access blocked ) be accessed via cloud front. 
+if error, check if cloud front distribution is active and enabled.
+
+ 6. Go to S3 buckets , objects → index.html → copy the object url and run it in browser
+if no error wait and run  - distribution url/index.html
