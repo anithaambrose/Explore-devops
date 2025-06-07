@@ -1,4 +1,4 @@
-EX - Application Deployment Architecture
+1. EX - Application Deployment Architecture
 
 
 1. Create a VPC → region ap-south-mumbai
@@ -99,7 +99,7 @@ NOTE:A hosted zone tells Route 53 how to respond to DNS queries for a domain suc
 
 ==================================================================================================================================================
 
-Ex - basic cloud front distribution
+2. Ex - basic cloud front distribution
 
  Exercise Link  :  https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.SimpleDistribution.html
 
