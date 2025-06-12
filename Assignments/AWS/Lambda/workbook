@@ -1,0 +1,77 @@
+Basic Hands-On Exercises
+
+1. Create a Basic Lambda Function
+
+Goal: Write a Lambda function that returns “Hello, World!”
+Tools: AWS Console or CLI
+Trigger: Test manually using the built-in test events.
+
+2. Integrate Lambda with Amazon S3
+
+Scenario: Automatically resize an image uploaded to an S3 bucket.
+Steps:
+
+  * Set up an S3 bucket.
+  * Upload an image file to trigger Lambda.
+  * Use the sharp Node.js package or Pillow in Python to resize.
+
+3. Schedule a Lambda Function with CloudWatch Events
+
+Use Case: Run a Lambda every day at 6 PM to send a notification.
+Tools: CloudWatch Event Rule + Lambda
+Action: Write to CloudWatch Logs or send SNS notification.
+
+---
+
+4. Monitor EC2 Instance Status and Send Alerts
+
+Scenario: Use Lambda to check EC2 status and send an alert if its stopped.
+Services Involved: EC2, Lambda, CloudWatch, SNS
+Steps:
+
+  * Lambda queries describe-instances.
+  * Sends alert using SNS if instance state is stopped.
+
+5. Automate EBS Snapshot Backup
+
+Goal: Use Lambda to take automated EBS snapshots daily.
+Steps:
+
+  * Use Boto3 (Python) or SDK to call create_snapshot.
+  * Tag snapshots with instance ID and timestamp.
+
+6. Delete Old Log Groups
+
+Goal: Cleanup old CloudWatch Log Groups older than 30 days.
+Steps:
+
+  * Use Lambda + CloudWatch Event.
+  * Use delete_log_group() based on lastEventTimestamp.
+
+
+
+Advanced / Exam-Focused Scenarios
+
+7. Use Lambda for Custom Metrics
+
+Use Case:** Push custom metrics to CloudWatch.
+Steps:
+
+  * Use PutMetricData to push a metric.
+  * Visualize the custom metric in CloudWatch dashboard.
+
+8. Process Data from SQS with Lambda
+
+Goal: Automatically process messages placed into an SQS queue.
+Steps:
+
+  * Create a Lambda trigger for the SQS queue.
+  * Parse and log messages.
+
+9. Audit IAM Role Changes
+
+Use Case: Use Lambda to parse CloudTrail logs and alert on IAM role changes.
+Steps:
+
+  * Enable CloudTrail and point to S3.
+  * Use Lambda to parse the event logs and alert via SNS.
