@@ -52,11 +52,99 @@ def lambda_handler(event, context):
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
-2. 
+2. Event Driven function trigger by S3 bucket.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+1. Create an Amazon S3 bucket.
+Region - ohio 
+Bucket type,General purpose 
+
+2.Create a policy 
+
+name -  s3-trigger-tutorial
+JSON CODE:
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:PutLogEvents",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream"
+            ],
+            "Resource": "arn:aws:logs:*:*:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::*/*"
+        }
+    ]
+}
+
+3.Craete Role and attach the policy.
+policy search box -  s3-trigger-tutorial. click Next.
+Role details - Role name - lambda-s3-trigger-role,  click  Create role.
+
+4. Create a Lambda function that returns the object type of objects in an Amazon S3 bucket.
+Click  Create function -  Author from scratch
+    Under Basic information, do the following:
+        Function name -  s3-trigger-tutorial
+        Runtime -  Python 3.13.
+        Architecture - x86_64.
+        Change default execution role tab -  choose Use an existing role - lambda-s3-trigger-role - Click Create function.
+
+5. Configure a Lambda trigger that invokes your function when objects are uploaded to your bucket.
+
+a. In the Code source pane on the Lambda console, paste the code into the code editor, replacing the code that Lambda created.
+
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+import json
+import urllib.parse
+import boto3
+
+print('Loading function')
+
+s3 = boto3.client('s3')
 
 
+def lambda_handler(event, context):
+    #print("Received event: " + json.dumps(event, indent=2))
+
+    # Get the object from the event and show its content type
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+    try:
+        response = s3.get_object(Bucket=bucket, Key=key)
+        print("CONTENT TYPE: " + response['ContentType'])
+        return response['ContentType']
+    except Exception as e:
+        print(e)
+        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+        raise e
+              
+
+ b. click  Deploy to update function code.
+
+6. create the trigger for the function .
+ choose S3.
+
+Under Bucket - select bucket name 
+Under Event types - select - only PUT
+Under Recursive invocation, select the check box to acknowledge 
+Choose Add.
+
+7. Test your function, using the trigger.
+upload a image or file in the s3 bucket and check for the logs under cloudwatch for lambda function  -  /aws/lambda/s3-trigger-tutorial
+if runtime error  go to lambda function -> under configurations tab - edit the timeout to 10 secs and save 
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
