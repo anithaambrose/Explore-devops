@@ -41,10 +41,10 @@ Note: Check if the Server is Running using EC2's ip address in the Web Browser
 ----------------------- Please Refer to task-5-Screenshot-1.3 & 1.4 ----------------------------------------
 
 4.  Create CodeDeploy Application & Deployment Group.
-      Application Name : FirstWebApp
+      Application Name : FirstWeb-Application
       Platform - Ec2
       a) Create an IAM role with policy - Codedeploy
-      b) create a deployment group  , name - firstwebapp-DG , Choose IAM Role(ARN)
+      b) create a deployment group  , name - FirstWebApp-DG , Choose IAM Role(ARN)
           Deployment-type - Inplace , Environment config - Amazon EC2 instances , Key - Name , Value - task-instance
           Never for Installing Codedeployagent , Deploymet settings - Codedeploydefault.allatonce 
             Uncheck Enable Load Balancing option
@@ -62,17 +62,17 @@ Note: Check if the Server is Running using EC2's ip address in the Web Browser
               deploy provider - AWSCodeDeploy
               Region - Ohio
               Application Name - FirstWebApp
-              Deployment roup - firstwebapp-DG
+              Deployment roup - FirstWebApp-DG
 
------------------------ Please Refer to task-5-Screenshot-1.7,1.8 ----------------------------------------
+----------------------- Please Refer to task-5-Screenshot-1.6 ----------------------------------------
 
 6. After Deployment, Verify if the WebApp is Working fine using the EC2's IP Address.
 
------------------------ Please Refer to task-5-Screenshot-1.9 ----------------------------------------
+----------------------- Please Refer to task-5-Screenshot-1.7 ----------------------------------------
 
 7. Make Changes to the index.html file in the github and see if the codepipeline automatically triggers and deploys the changes to the Server.
 
------------------------ Please Refer to task-5-Screenshot-1.10 ----------------------------------------
+----------------------- Please Refer to task-5-Screenshot-1.8 ----------------------------------------
 
 =============================================================================================================================================
 PS NOTE:
