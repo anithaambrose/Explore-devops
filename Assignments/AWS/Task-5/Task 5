@@ -10,7 +10,7 @@ Steps:
       b) create yml script to instruct EC2
       c) create a deploy.sh to start server
 
-  github Link  :https://github.com/anithaambrose/guvi-devops/tree/main/Assignments/AWS/Task-5
+  github Link  :https://github.com/anithaambrose/SimpleWebApp
 
 ----------------------- Please Refer to task-5-Screenshot-1.1 ----------------------------------------
 
@@ -44,24 +44,19 @@ Note: Check if the Server is Running using EC2's ip address in the Web Browser
       Application Name : FirstWebApp
       Platform - Ec2
       a) Create an IAM role with policy - Codedeploy
-      b) create a deployment group  , name - firstwebapp-DG
-          Deployment-type - Inplace , Value - task-instance
-          Codedeploydefault.allatonce 
+      b) create a deployment group  , name - firstwebapp-DG , Choose IAM Role(ARN)
+          Deployment-type - Inplace , Environment config - Amazon EC2 instances , Key - Name , Value - task-instance
+          Never for Installing Codedeployagent , Deploymet settings - Codedeploydefault.allatonce 
+            Uncheck Enable Load Balancing option
 
------------------------ Please Refer to task-5-Screenshot-1.5 & 1.6 ----------------------------------------
+----------------------- Please Refer to task-5-Screenshot-1.5 ----------------------------------------
 
-5. Create a Codebuild Project 
-        Source - Github 
-        Enivironment - Amazon Linux 
-
------------------------ Please Refer to task-5-Screenshot-1.6 ----------------------------------------
-
-6. Create CodePipeline 
+5. Create CodePipeline 
 
         a)create pipeline - Choose custom build pipeline, with Queueed with New service role 
               Pipeline name - FirstWebApp-Pipeline
         b)Connect to Github - choose repository & branch where code resides.
-        c)Build - choose build project
+        c)Skip build stage.
         d)Skip test stage.
         e)Depoy 
               deploy provider - AWSCodeDeploy
@@ -71,11 +66,11 @@ Note: Check if the Server is Running using EC2's ip address in the Web Browser
 
 ----------------------- Please Refer to task-5-Screenshot-1.7,1.8 ----------------------------------------
 
-7. After Deployment, Verify if the WebApp is Working fine using the EC2's IP Address.
+6. After Deployment, Verify if the WebApp is Working fine using the EC2's IP Address.
 
 ----------------------- Please Refer to task-5-Screenshot-1.9 ----------------------------------------
 
-8. Make Changes to the index.html file in the github and see if the codepipeline automatically triggers and deploys the changes to the Server.
+7. Make Changes to the index.html file in the github and see if the codepipeline automatically triggers and deploys the changes to the Server.
 
 ----------------------- Please Refer to task-5-Screenshot-1.10 ----------------------------------------
 
