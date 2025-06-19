@@ -1,4 +1,20 @@
 Task Description:
 
 Deploy a simple web application using AWS code commit, code build and deploy & access via browser and automate via codepipeline.
+-------------------------------------------
+CodeCommit – Store your app code.
+CodeBuild – Build your application (optional if no build needed).
+CodeDeploy – Deploy to EC2 or ECS.
+CodePipeline – Automate the flow: commit → build → deploy
+---------------------------------------------
+Steps:
+
+1. Create n EC2 instance  and under advanced details add the commands to install httpd and codedeployagent 
+Name - task-instance
+
+2. Create IAM Role with AmazonEC2forAWSCodeDeploy and attach it to task-instance
+Role Name - Task-instance-Role 
+
+3. 
+
 
