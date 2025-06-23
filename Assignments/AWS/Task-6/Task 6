@@ -13,29 +13,65 @@ Steps:
       Name - Task-instance, AMI - Ubuntu 
 
 2. Create a new directory & add script files.
-
+      Dir Name : git_task_dir
+      Files:  File_01.sh File_02.txt File_03.txt
 
 3. Create a new repository in Github.
       Name - Task-Git-Repo
 
+------------------- task-6-Screenshot-1.1------------------------
 
 4. Initializing the local directory into a Git Repository to track.
+      git init - initializes empty git repository 
+      git status - displays untracked files
+      git add - adds files to track list
 
+------------------- task-6-Screenshot-1.2------------------------
 
-5. Linking Git repository with Github by Pushing code into the github repository.
+5. Linking Git repository with Github & Pushing code into the github repository.
+      git remote add origin URL - linking a git repository to github 
+      Generate a token (settings -> developer_settings -> personal access token -> token classic -> generate new token)
+      git push - Pushes commited files to github (master branch)
+      git log  - shows the commit history 
 
+------------------- task-6-Screenshot-1.3 ------------------------
 
-6. Edit the file -    ,and check status of git repository.
+6. Edit the file - File_01.sh and check status of git repository, commit and then push it to github.
 
+------------------- task-6-Screenshot-1.4 ------------------------
 
-7. Creating new branch and making changes to the branch files, shows branch is ahead of master branch 
+7. Creating new branch - feature & push the branch to github.
+
+------------------- task-6-Screenshot-1.5 ------------------------
+
+8. Edit the File-File_02.txt in the feture branch and display branch is a head of master branch 
+
+------------------- task-6-Screenshot-1.6 ------------------------
+
     1. Merge the commits ahead with master branch 
-        a) Using github GUI
+        a) Using github - Pull Request
+                  from feature branch , create pull request and merge the files to master branch
 
+------------------- task-6-Screenshot-1.7 ------------------------
 
-        b) In Git - local 
+        b) In Git - using git merge command 
 
-8. To continue working in the local directory in Git using stash commands
+------------------- task-6-Screenshot-1.8 ------------------------
 
+8. To continue working in the local directory in Git using stash commands (temp storage space)
+            
+      git stash - stores the work-in-progress files that arent commited to the temp space 
+      git stash list -  To list the File wuith commit id that are stored in stash.
+      git pop - removes the stashed files.
 
-9. Rebase - 
+------------------- task-6-Screenshot-1.9 ------------------------
+
+9. Perform Rebase to place the newly creatured feature files on top of updated master files 
+            Feature file - Feature_File.txt
+            Master File - Script.py
+
+            Used Git log command shows the heirachy of how they are placed 
+            Finally pushed the commits to Github.
+
+------------------- task-6-Screenshot-1.10 ------------------------
+==============================================================================================
