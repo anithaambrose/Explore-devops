@@ -7,3 +7,35 @@ convert the local directory into a Git repository, and
 link it to GitHub for pushing the code into the repository.
 Perform merge, rebase, stash commands in following github repo.
 ==============================================================================
+
+Steps:
+1. Create an EC2 instance.
+      Name - Task-instance, AMI - Ubuntu 
+
+2. Create a new directory & add script files.
+
+
+3. Create a new repository in Github.
+      Name - Task-Git-Repo
+
+
+4. Initializing the local directory into a Git Repository to track.
+
+
+5. Linking Git repository with Github by Pushing code into the github repository.
+
+
+6. Edit the file -    ,and check status of git repository.
+
+
+7. Creating new branch and making changes to the branch files, shows branch is ahead of master branch 
+    1. Merge the commits ahead with master branch 
+        a) Using github GUI
+
+
+        b) In Git - local 
+
+8. To continue working in the local directory in Git using stash commands
+
+
+9. Rebase - 
