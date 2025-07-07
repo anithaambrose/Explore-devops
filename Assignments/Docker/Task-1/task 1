@@ -45,4 +45,34 @@ ubuntu@ip-172-31-11-141:~$
 
 11.docker rmi -> removes the docker image
 
-12.
+12. docker login - to loginto the private dockerhub repository
+
+13. docker tag -> to create a new image with a existing image
+
+14. docker push -> to push the image from local repo to private repo (dockerhub)
+
+15.docker logout -> logs out of the registry.
+
+16. docker volume create - create a volume for docker
+
+17. docker rn -it --name -v -> runs the image with mounted volume
+
+18. create a file inside the container/data directory.
+
+19. exit the container and cat the file to verify if the file is present in the mounted volume
+
+20. docker network create -> creates a newtork 
+
+21. docker run -dit --name --network -> runs two ubuntu containers in the same network
+
+22. docker exec -> lets you connect  between the two containers.
+
+23. ping command check the connection with ubuntu1 
+
+24. docker rm -f -net1 net12 -> removes the connections 
+
+25. docker volume rm -> deletes volume
+
+26 docker network rm -> deletes network
+
+===========Please refer to a the screenshots from 1-7=================
