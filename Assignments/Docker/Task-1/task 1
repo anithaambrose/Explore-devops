@@ -26,4 +26,23 @@ ubuntu@ip-172-31-11-141:~$ docker --version
 Docker version 28.3.1, build 38b7060
 ubuntu@ip-172-31-11-141:~$ 
 
-3.
+3.Docker pull - to pull the images from the dockerhub registry (public)
+
+4. Docker  images - to list the images 
+
+5.docker run - to run the docker conatiner from the images 
+      opens container in root user mode - Ctrl+p Ctrl+q to exit so the container runs in the background.
+
+6. docker ps  - list the running containers
+
+7. docker ps -a -> lists all process of the conatiners even if its exited.
+
+8.doc exec ->  attachs my shell to the running container
+
+9.docker stop - stops the running container
+
+10.docker rm -> removes the container from the containers process history.
+
+11.docker rmi -> removes the docker image
+
+12.
