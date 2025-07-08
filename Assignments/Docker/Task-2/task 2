@@ -75,22 +75,24 @@ services:
       - "80:80"
     container_name: My-Website
 
-================ please refer to task-2-Screenshot- 1 ====================
+================ please refer to task-2-Screenshot-1 ====================
 
 6. create and start the container using docker compose up.
 
-================ please refer to task-2-Screenshot- 2 ====================
+================ please refer to task-2-Screenshot-2 ====================
 
 7. Verify the website is up.
 http://13.203.213.243/
 
-================ please refer to task-2-Screenshot- 3 ====================
+================ please refer to task-2-Screenshot-3 ====================
 
 8.Verify images & container is running using docker images & ps & compose logs & ps commands.
 
 9. Run docker compose down to remove the container & verified using compose ps.
 
-================ please refer to task-2-Screenshot- 4 ====================
+10.Removed the docker images using docker rmi.
+
+================ please refer to task-2-Screenshot-4 ====================
 
 
 
