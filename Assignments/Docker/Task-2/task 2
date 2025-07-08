@@ -1,0 +1,11 @@
+Task Description:
+
+Create a dockerfile, docker-compose file which when executed must display your basic details in the website.
+
+Steps:
+
+1.Create an EC2 Intsnace
+Name - Dockerdemo
+AMI - Ubuntu 
+
+2. Install Docker 
