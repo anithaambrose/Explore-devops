@@ -29,32 +29,72 @@ Steps:
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 3. Create the project structure
-    myapp
-    |
-    |-Dockerfile
+    websites
     |-docker-compose.yaml
-    |-index.html
+    |-site-1
+        |-Dockerfile
+        |-index.html
+    |-site-2
+        |-Dockerfile
+        |index.html
 
     Dockerfile:
+        FROM nginx:alpine
+        WORKDIR /usr/share/nginx/html
+        COPY . .
+        EXPOSE 80
 
     index.html:
+        <html>
+        <head><title>SITE 1</title>
+        </head
+        <body><h1>Hi from SITE 1</h1>
+        </body>
+        </html>
 
-4.  Create the docker image & verify 
+    index.html:
+        <html>
+        <head><title> SITE 2</title>
+        </head
+        <body> <h1> Hi from SITE 2</h1>
+        </body>
+        </html>
 
-5.  Deploy the image using docker-compose.yaml file & Verify containers process.
-
+4.  Build deploy & run container using docker-compose.yaml file.
         docker-compose.yaml:
+       version: "3.8"
+        services:
+          site-1:
+             build:
+                context: ./site-1
+                image: anitodevops/site-1
+                container: Site-1-container
+                ports:
+                  - "8081:80"
+                volumes:
+                  - ./site-1:/var/opt/nginx
 
+          site-2:
+            build:
+               context: ./site-2
+               container: Site-2-container
+               image: anitodevops/site-2
+               ports:
+                - "8082:80"
+               volumes:
+                - ./site-2:/var/opt/nginx
 
-6.  Login to dockerhub 
+5.   Build and deploy using docker-compose up -d 
 
-7.  create a tag using docker tag command 
+6.  verify docker images, compose process history to verify container are up and running.
+
+7.  Login to dockerhub
 
 8.  Push code into dockerhub registry 
 
-9.  Logout of docker registry.
+9.  Verify docker image in dockerhub registry.
 
-10. Verify docker image in dockerhub registry.
+10. Logout of docker registry.
 
 
 
