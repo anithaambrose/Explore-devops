@@ -4,12 +4,12 @@ Create a custom docker image for nginx and deploy it using docker compose,
 where the volume bind mount should be at /var/opt/nginx location.
 Push the created custom docker image to your docker-hub.
 ===================================================================================
-
 Steps:
 
 1. Create an EC2 instance.
     Name - Docker-task
     AMI - Ubuntu
+    SG - inbound rule - add rule - custom TCP ports -8081,8082
 
 2. Install Keys, Apt sources, docker, docker-compose plugins & other packages.
     # Add Docker's official GPG key:
@@ -46,29 +46,23 @@ Steps:
 
     index.html:
         <html>
-        <head><title>SITE 1</title>
-        </head
-        <body><h1>Hi from SITE 1</h1>
-        </body>
+        <head><title>SITE 1</title></head>
+        <body><h1>Hi from SITE 1</h1></body>
         </html>
 
     index.html:
         <html>
-        <head><title> SITE 2</title>
-        </head
-        <body> <h1> Hi from SITE 2</h1>
-        </body>
+        <head><title> SITE 2</title></head>
+        <body> <h1> Hi from SITE 2</h1></body>
         </html>
 
 4.  Build deploy & run container using docker-compose.yaml file.
         docker-compose.yaml:
-       version: "3.8"
         services:
           site-1:
              build:
                 context: ./site-1
                 image: anitodevops/site-1
-                container: Site-1-container
                 ports:
                   - "8081:80"
                 volumes:
@@ -77,24 +71,32 @@ Steps:
           site-2:
             build:
                context: ./site-2
-               container: Site-2-container
                image: anitodevops/site-2
                ports:
                 - "8082:80"
                volumes:
                 - ./site-2:/var/opt/nginx
 
-5.   Build and deploy using docker-compose up -d 
+================== Please refer to task-3-Screenshot-1 ===========================
 
-6.  verify docker images, compose process history to verify container are up and running.
+5.   Build and deploy using docker-compose up -d command.
 
-7.  Login to dockerhub
+================== Please refer to task-3-Screenshot-2 ===========================
+
+6.  verify docker images, compose process to verify container are up and running.
+
+================== Please refer to task-3-Screenshot-3 ===========================
+
+7.  Login to dockerhub using docker login 
 
 8.  Push code into dockerhub registry 
 
 9.  Verify docker image in dockerhub registry.
 
 10. Logout of docker registry.
+
+================== Please refer to task-3-Screenshot-4 ===========================
+
 
 
 
