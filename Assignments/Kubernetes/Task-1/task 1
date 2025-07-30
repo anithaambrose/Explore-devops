@@ -53,7 +53,7 @@ namespace_manifest.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: my-namespace
+  name: task-namespace
   labels:
     environment: development
 
