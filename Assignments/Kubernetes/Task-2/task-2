@@ -1,0 +1,40 @@
+Task Description:
+-----------------
+Create the K8s EKS,further you have to do the deployment of the Nginx application and 
+access the application outside the cluster.
+
+---------------------------------------------------------------------------------
+
+Steps:
+------
+1. Create an Ec2 instance
+Name - K8s-task
+AMI- ubuntu
+
+2. Install awscli, kubectl, eksctl 
+
+3. create a cluster using eksctl in aws eks service.
+
+cluster name - task-cluster
+region - ap-south-1
+nodegroup name - linux-N-grp
+nodetype - t3.medium
+node count - 3
+fully managed.
+
+4.Verified cluster creation in aWS console under eks dashboard & in terminal 
+
+commands :
+ kubectl get nodes
+
+5. create a manifest file to deploy a nginx application 
+
+image - nginx:latest
+replicaset - 3
+
+6. Create a service & ingress manifest.yaml file to connect to the application outside of the cluster.
+
+
+
+
+
