@@ -6,15 +6,41 @@ Steps:
 -----
 1. Create and Launch an EC2 instance.
 Name: jenkins-task-1
-AMI: Ubuntu 22.04 LTS, t2.micro 
+AMI: Ubuntu 22.04 LTS, t2.medium
 
-2. Install jenkins & dependency packages.
+2. Install java, jenkins packages.
+
+java :
+sudo apt update
+sudo apt install fontconfig openjdk-21-jre
+java -version
+
+jenkins:
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
 
 3. Verfiy jenkins service is up and running in browser & terminal.
+commands:
+sudo systemctl start jenkins
+sudo systemctl status jenkins
 
-4.
 ----------- Please refer to task-1-Screenshot-1.1 -----------
 
-5. Create Jenkins Projects 
+4. verified by searching <public ip addr>:8080 (jenkins default port no - 8080)
+
+5. get the password from ec2 terminal , install suggested plugins ,
+update the login credentials by setting new ones. an***ps, AL****h11! , setup jenkins url publicip:8080 → start jenkins.
+$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+66829244bf8d43f49f6759d0c1d20814
+
+----------- Please refer to task-1-Screenshot-1.2 -----------
+
+6. Create Jenkins Projects 
 
 
