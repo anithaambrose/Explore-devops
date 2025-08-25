@@ -41,6 +41,9 @@ $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ----------- Please refer to task-1-Screenshot-1.2 -----------
 
-6. Create Jenkins Projects 
+6. Create Jenkins pipeline Project.
+
+Name -> my-first-pipeline
+description - create pipeline that automates get code -> build using mvn -> test code -> dockerize image -> store img to registry.
 
 
