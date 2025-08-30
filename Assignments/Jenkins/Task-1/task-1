@@ -6,7 +6,7 @@ Steps:
 -----
 1. Create and Launch an EC2 instance.
 Name: jenkins-task-1
-AMI: Ubuntu 22.04 LTS, t2.medium
+AMI: Ubuntu 22.04 LTS, t3.medium
 
 2. Install java, jenkins packages.
 
@@ -33,17 +33,64 @@ sudo systemctl status jenkins
 ----------- Please refer to task-1-Screenshot-1.1 -----------
 
 4. verified by searching <public ip addr>:8080 (jenkins default port no - 8080)
+    $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+      66829244bf8d43f49f6759d0c1d20814
 
 5. get the password from ec2 terminal , install suggested plugins ,
 update the login credentials by setting new ones. an***ps, AL****h11! , setup jenkins url publicip:8080 → start jenkins.
-$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-66829244bf8d43f49f6759d0c1d20814
 
 ----------- Please refer to task-1-Screenshot-1.2 -----------
 
-6. Create Jenkins pipeline Project.
+6. Create Jenkins Freestyle Project.
 
-Name -> my-first-pipeline
-description - create pipeline that automates get code -> build using mvn -> test code -> dockerize image -> store img to registry.
+Name -> first-jenkins-project
+description - create a freestyle project with description 9first jenkins freestyle project) to prints a Hello Message.
+Under Build step -> choose execute shell with commands:
+date 
+echo "Hello from my first jenkins project on AWS"
+click apply , Save click build Now , clcick Console output to view the results.
+
+7. Create Jenkins Pipeline Project 
+
+Name - First-Pipeline-Project
+description :
+Pipeline To automate a complete CI process using DSL.
+1.Getting the code from github
+2.building the project using maven 
+3.building  the docker image from dockerfile
+4.pushing docker image to docker registry 
+
+Performed below action uner manage jenkins
+Plugins  - installed git,  Maven integration, pipeline stage view, RBAC Authorization Strategy 
+Users - created 3 users ( mick, gab, raph )
+Credentials - Added credentials for docker hub.
+Tools - Added build tool Maven, its version.
+Security - Authorization - enabled  Role based strategy.
+Manage Roles -  Created Roles and gave permission to perform specific actions.
+Assign Roles - Mapped Roles to users.
+
+Additionally,
+Forked the repo code to my git(Tomcat_e2e_app).
+Installed Docker & restarted jenkins in terminal.
+enable webhook for trigger mechnaism in the pipleine - checking out trigger for GITScm Polling checkbox
+adding webhook in github repo by giving payload URL -  http://13.233.162.100:8080/github-webhook/ ; choosing content type as - application/json under repo settings.
+
+Declarative script with stages:
+
+
+clcick apply & save, Build Now
+The Pipeline stage view gives a clear virtualization of success / failure of each stage in jenkins dashbaord.
+
+Kubectl get all -> shows the resources created in terminal 
+Docker hub -> shows the docker image pushed to the registry
+
+To verify automation proces:
+Make changes to git repo - read.me file and verified the pipeline auto trigger.
+
+
+
+
+
+
 
 
