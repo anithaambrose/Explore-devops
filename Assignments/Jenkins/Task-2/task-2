@@ -1,1 +1,46 @@
+Task Description:
+
+Create a simple script file and push it to repo.
+Create a project in Jenkins connected to your GitHub repository. 
+When a commit is made to your repo, automatically build must get triggered from Jenkins and the output must be shared to me via email.
+
+====================================================================================================================================
+Steps:
+
+
+Create Jenkins Pipeline Project 
+
+Name - First-Pipeline-Project
+description :
+Pipeline To automate a complete CI process using DSL.
+1.Getting the code from github
+2.building the project using maven 
+3.building  the docker image from dockerfile
+4.pushing docker image to docker registry 
+
+Performed below action uner manage jenkins
+Plugins  - installed git,  Maven integration, pipeline stage view, RBAC Authorization Strategy 
+
+
+Additionally,
+Forked the repo code to my git(Tomcat_e2e_app).
+Installed Docker & restarted jenkins in terminal.
+enable webhook for trigger mechnaism in the pipleine - checking out trigger for GITScm Polling checkbox
+adding webhook in github repo by giving payload URL -  http://13.233.162.100:8080/github-webhook/ ; choosing content type as - application/json under repo settings.
+
+Declarative script with stages:
+
+
+clcick apply & save, Build Now
+The Pipeline stage view gives a clear virtualization of success / failure of each stage in jenkins dashbaord.
+
+Kubectl get all -> shows the resources created in terminal 
+Docker hub -> shows the docker image pushed to the registry
+
+To verify automation proces:
+Make changes to git repo - read.me file and verified the pipeline auto trigger.
+
+
+
+
 
