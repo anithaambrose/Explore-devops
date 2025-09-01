@@ -8,40 +8,84 @@ the output must be shared to me via email.
 ====================================================================================================================================
 Steps:
 
+1. Create and Launch an EC2 instance.
+Name: jenkins-task-2
+AMI: Ubuntu 22.04 LTS, t3.medium
 
-Create Jenkins Pipeline Project 
+2. Install java, jenkins packages & Verfiy jenkins service is up and running in browser & terminal.
 
-Name - First-Pipeline-Project
-description :
-Pipeline To automate a complete CI process using DSL.
-1.Getting the code from github
-2.building the project using maven 
-3.building  the docker image from dockerfile
-4.pushing docker image to docker registry 
+java :
+sudo apt update
+sudo apt install fontconfig openjdk-21-jre
+java -version
+
+jenkins:
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+commands:
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+2.Initialize git Created a simple-script.sh & readme file.
+3.created SSH key token and pushed the commited file  to git repo
+4. Created the jenkinsfile pipeline script
+
+----------- Please refer to task-1-Screenshot-1.1,2 1.5 -----------
+
+5. In Google Acct , Created amn App Password for jenkinstas-2 and updated the system settings for 
+    Email notification & Extended Email Notification.
+      SMTP Server - smtp.gmail.om
+      Default user email suffix - @gmail.com
+      Username - email id 
+      Password - Google Acct's newly created app password
+      Enabled SMTP Authentication & Opted for TLS
+      SMTP Port - 587 
+      Tested Configuration & successfully sent test email to Gmail.
+
+----------- Please refer to task-1-Screenshot-1.3 -----------
+
+6. Launch Jenkins and setup login credentials , plugins.
 
 Performed below action uner manage jenkins
-Plugins  - installed git,  Maven integration, pipeline stage view, RBAC Authorization Strategy 
+  Plugins  - installed git, pipeline stage view, Extension email notification , Mailer plugin.
 
+7. Github repo added webhook 
+      payload URL -  http://<public-ip>:8080/github-webhook/ ; 
+      choosing content type as - application/json under repo settings.
+      Enabled Just a Push Event & saved.
 
-Additionally,
-Forked the repo code to my git(Tomcat_e2e_app).
-Installed Docker & restarted jenkins in terminal.
-enable webhook for trigger mechnaism in the pipleine - checking out trigger for GITScm Polling checkbox
-adding webhook in github repo by giving payload URL -  http://13.233.162.100:8080/github-webhook/ ; choosing content type as - application/json under repo settings.
+----------- Please refer to task-1-Screenshot-1.4 -----------
 
-Declarative script with stages:
+8.  Create Jenkins Pipeline Project 
+  Name - jenkins-task2-pipeline
+  description : creating a pipeline to trigger every time a commit is made to github repo
+    Pipeline To automate build and push email.
+    1.Getting the simplescript.sh from github
+    2.Running the script 
 
+9. Pipeline Configuration 
+      Trigger - Enabled webhook by checking out Github trigger for GITScm Polling 
+      Pipeline Script from SCM 
+            Choose SCM - Git 
+            Updated Repo URL - https://github.com/anithaambrose/jenkins-t2-repo.git
+            Branch - */main
+            Mentioned Script Path - Jenkinsfile
+      click apply & save.
 
-clcick apply & save, Build Now
-The Pipeline stage view gives a clear virtualization of success / failure of each stage in jenkins dashbaord.
+10. In the terminal add , commit and pushed the jenkinsfile as second commit to github to trigger the pipeline.
 
-Kubectl get all -> shows the resources created in terminal 
-Docker hub -> shows the docker image pushed to the registry
+----------- Please refer to task-1-Screenshot- 1.6 -----------
 
-To verify automation proces:
-Make changes to git repo - read.me file and verified the pipeline auto trigger.
+11. verifed automation proces: since the commit of jenkins file triggered the pipeline, 
+Also made changes to git repo - readme file and verified the pipeline auto trigger and notified through email on success.
 
-
+----------- Please refer to task-1-Screenshot-1.7 -----------
 
 
 
