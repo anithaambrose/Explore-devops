@@ -4,3 +4,42 @@ Launch Linux EC2 instances in two regions using a single Terraform file.
 
 ========================================================================
 Steps:
+
+1. Installed awscli in local terminal.
+
+2. Downloaded Visual Studio & Installed extensions - Hashicorp HCL, Hashicorp Terraform , Terraform Plus.
+
+3. Ran aws configure & passed access key to connect VSC with aws account.
+
+4. created a main.tf file in under Task-1 
+     main.tf has 2 blocks Provider & Resource block for Launching 2 EC2 instances in 2 Regions  
+        Provider - aws  
+        Alias name - Nvirginia & Mumbai - as we are using 2 providers with 2 diff regions 
+        Region - us-east-1 & ap-south-1  
+        Instance names - inst-USA & inst-Asia
+        ami - ami-0360c520857e3138f(us-east-1) & ami-02d26659fd82cf299 (ap-south-1)
+        instance type - t2.micro 
+
+------------------- Please refer to task-1-Screenshot-1.1 -------------------------
+
+5. Initialize terraform with terraform init
+
+6. Check for Execution plan using terraform plan.
+
+------------------- Please refer to task-1-Screenshot-1.2 -------------------------
+
+7. Create Infrastructure usig terraform apply & approved creation.
+
+------------------- Please refer to task-1-Screenshot-1.3 -------------------------
+
+8. Verified EC2 creation in both regions.
+
+------------------- Please refer to task-1-Screenshot-1.4 -------------------------
+
+9. Verified tfstate file & its connetnts using terraform show.
+
+------------------- Please refer to task-1-Screenshot-1.5 -------------------------
+
+10. Finally deleted both the instances using terraform destroy command with yes approval value , which cleared the tfstate file as well.
+
+------------------- Please refer to task-1-Screenshot-1.6 -------------------------
