@@ -1,0 +1,14 @@
+Task Description:
+
+Create 2 EC2 instances on 2 different regions and install nginx using terraform script.
+========================================================================================
+
+Steps:
+------
+1. Installed awscli in local terminal.
+
+2. Downloaded Visual Studio & Installed extensions - Hashicorp HCL, Hashicorp Terraform , Terraform Plus.
+
+3. Ran aws configure & passed access key to connect VSC with aws account.
+
+4. created a main.tf file in under Task-2
