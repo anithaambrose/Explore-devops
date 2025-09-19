@@ -11,4 +11,32 @@ Steps:
 
 3. Ran aws configure & passed access key to connect VSC with aws account.
 
-4. created a main.tf file in under Task-2
+4. created a main.tf & variable.tf file in under Task-2
+        Provider - aws  
+        Alias name - Nvirginia & Mumbai - as we are using 2 providers with 2 diff regions 
+        Region - us-east-1 & ap-south-1  
+        Instance names - inst-USA & inst-Asia
+        ami - ami-0360c520857e3138f(us-east-1) & ami-02d26659fd82cf299 (ap-south-1)
+        instance type - t2.micro
+        created variable file to reduce the line of code for ami & instance_type.
+        user_data - feature lets to run commands in the Ec2's.
+        tag - helps name the instances 
+
+------------------- Please refer to  main.tf & variables.tf -------------------------
+
+5. ran terraform init, terraform plan & terraform apply.
+
+------------------- Please refer to task-2-Screenshot-2.1 -------------------------
+
+6. verified the Ec2 instance being created in respective regions.
+
+------------------- Please refer to task-2-Screenshot-2.2 -------------------------
+7. added security groups to allow HTTP (port 80).
+
+8. verified by checking  http://<public-ip> in browser with displaying the Nginx welcome page.
+
+------------------- Please refer to task-2-Screenshot-2.3 -------------------------
+
+9. Destryed the instances using terraform destroy command.
+
+------------------- Please refer to task-2-Screenshot-2.4 -------------------------
