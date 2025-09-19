@@ -20,7 +20,7 @@ Steps:
         ami - ami-0360c520857e3138f(us-east-1) & ami-02d26659fd82cf299 (ap-south-1)
         instance type - t2.micro 
 
-------------------- Please refer to task-1-Screenshot-1.1 -------------------------
+------------------- Please refer to task-1-Screenshot-1.1 & main.tf -------------------------
 
 5. Initialize terraform with terraform init
 
@@ -42,4 +42,4 @@ Steps:
 
 10. Finally deleted both the instances using terraform destroy command with yes approval value , which cleared the tfstate file as well.
 
-------------------- Please refer to task-1-Screenshot-1.6 -------------------------
+------------------- Please refer to task-1-Screenshot-1.6 & terraform.tfstate & terraform.tfstatebackup files ----------------
